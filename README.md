@@ -1,2 +1,1 @@
-Quiz-on-AngularJS
-=================
+Unit Test Framework: http://docs.angularjs.org/guide/dev_guide.unit-testing

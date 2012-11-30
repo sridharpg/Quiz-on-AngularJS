@@ -1,0 +1,20 @@
+<!doctype html>
+        <html data-ng-app="quizApp">
+            <head>
+                <title>Quiz</title>
+            </head>
+            <body>
+            <div id="quiz" data-ng-controller="QuizCtrl">
+                <ul id="question-list">
+                    <li data-ng-repeat="q in quiz.questionnaire">
+                        <span>{{q.statement}}</span>
+                    </li>
+                </ul>
+            </div>
+            <script src="js/thirdparty/angular.js"></script>
+            <script src="js/app.js"></script>
+            <script src="js/models/questionModel.js"></script>
+            <script src="js/models/quizModel.js"></script>
+            <script src="js/controllers/quizCtrl.js"></script>
+            </body>
+        </html>

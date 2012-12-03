@@ -1,3 +1,3 @@
 'use strict';
 
-var quizApp = angular.module('quizApp', []);
+var quizApp = angular.module('quizApp', ['ngResource']);

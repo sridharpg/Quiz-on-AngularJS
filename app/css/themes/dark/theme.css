@@ -1,0 +1,133 @@
+.quiz-body{
+    background-image: url("images/bg.jpg");
+    background-repeat: repeat;
+    font-family: arial;
+}
+
+.quiz-body .home-view {
+    text-align: center;
+}
+
+.quiz-body .home-view .logo {
+    background-image: url('images/logo.png');
+    width: 400px;
+    height: 110px;
+    display: inline-block;
+    background-repeat: no-repeat;
+    margin-top: 3%;
+}
+
+.quiz-body .home-view .name-label {
+    display: block;
+    margin-top: 8%;
+}
+
+.quiz-body .home-view .name-label span{
+    color: white;
+    display: block;
+}
+
+.quiz-body .home-view .name-label input{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    margin-top: 5px;
+
+    width: 500px;
+    height: 60px;
+
+    border-radius: 30px;
+    border: 2px solid #333;
+    background: rgba(255, 255, 255, .15);
+    outline: none;
+
+    color: white;
+
+    font-size: 30px;
+
+    padding-left: 20px;
+    padding-right: 20px;
+
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.quiz-body .button-bar {
+    width: 350px;
+    display: inline-block;
+    margin-top: 9%;
+}
+
+.quiz-body .button-bar button:last-child{
+    margin-top: 30px;
+}
+
+.quiz-body button {
+    height: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 30px;
+    width: 320px;
+
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+
+    border: 2px solid #555;
+    font-size: 30px;
+
+    background-image: linear-gradient(bottom, rgb(153,153,153) 23%, rgb(255,255,255) 75%);
+    background-image: -o-linear-gradient(bottom, rgb(153,153,153) 23%, rgb(255,255,255) 75%);
+    background-image: -moz-linear-gradient(bottom, rgb(153,153,153) 23%, rgb(255,255,255) 75%);
+    background-image: -webkit-linear-gradient(bottom, rgb(153,153,153) 23%, rgb(255,255,255) 75%);
+    background-image: -ms-linear-gradient(bottom, rgb(153,153,153) 23%, rgb(255,255,255) 75%);
+
+    background-image: -webkit-gradient(
+    	linear,
+    	left bottom,
+    	left top,
+    	color-stop(0.23, rgb(153,153,153)),
+    	color-stop(0.75, rgb(255,255,255))
+    );
+
+    text-transform: capitalize;
+    -webkit-transition-property: color;
+    -webkit-transition-duration: .2s;
+}
+
+.quiz-body button:active:disabled, .quiz-body button:hover:disabled, .quiz-body button:disabled{
+    background: #ccc;
+}
+
+.quiz-body button:hover {
+    background-image: linear-gradient(bottom, rgb(153,153,153) 19%, rgb(221,221,221) 48%);
+    background-image: -o-linear-gradient(bottom, rgb(153,153,153) 19%, rgb(221,221,221) 48%);
+    background-image: -moz-linear-gradient(bottom, rgb(153,153,153) 19%, rgb(221,221,221) 48%);
+    background-image: -webkit-linear-gradient(bottom, rgb(153,153,153) 19%, rgb(221,221,221) 48%);
+    background-image: -ms-linear-gradient(bottom, rgb(153,153,153) 19%, rgb(221,221,221) 48%);
+
+    background-image: -webkit-gradient(
+    	linear,
+    	left bottom,
+    	left top,
+    	color-stop(0.19, rgb(153,153,153)),
+    	color-stop(0.48, rgb(221,221,221))
+    );
+}
+
+.quiz-body button:active {
+    background-image: linear-gradient(bottom, rgb(255,255,255) 19%, rgb(153,153,153) 75%);
+    background-image: -o-linear-gradient(bottom, rgb(255,255,255) 19%, rgb(153,153,153) 75%);
+    background-image: -moz-linear-gradient(bottom, rgb(255,255,255) 19%, rgb(153,153,153) 75%);
+    background-image: -webkit-linear-gradient(bottom, rgb(255,255,255) 19%, rgb(153,153,153) 75%);
+    background-image: -ms-linear-gradient(bottom, rgb(255,255,255) 19%, rgb(153,153,153) 75%);
+
+    background-image: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(0.19, rgb(255,255,255)),
+        color-stop(0.75, rgb(153,153,153))
+    );
+}

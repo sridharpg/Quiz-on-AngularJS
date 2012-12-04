@@ -42,7 +42,7 @@
     background: rgba(255, 255, 255, .15);
     outline: none;
 
-    color: white;
+    color: #B2B2B2;
 
     font-size: 30px;
 
@@ -51,6 +51,10 @@
 
     text-align: center;
     text-transform: capitalize;
+}
+
+.quiz-body .home-view .name-label input:focus {
+    border: 2px solid #595959;
 }
 
 .quiz-body .button-bar {
@@ -130,4 +134,86 @@
         color-stop(0.19, rgb(255,255,255)),
         color-stop(0.75, rgb(153,153,153))
     );
+}
+
+.quiz-body .timer {
+    background-image: url('images/timer_outer.png');
+    background-repeat: no-repeat;
+    width: 103px;
+    height: 112px;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+}
+
+.quiz-body .timer .hand {
+    width: 6px;
+    background: white;
+    position: absolute;
+    top: 25px;
+    left: 49px;
+    height: 37px;
+    border-radius: 10px;
+    z-index: 1;
+}
+
+.quiz-body .timer .hand.static {
+    padding-bottom: 3px;
+    box-shadow: 1px -1px 5px 0px #999;
+}
+
+.quiz-body .timer .hand.moving {
+    -webkit-transform: rotate(0deg);
+    -webkit-transform-origin: 50% 100%;
+
+    -moz-transform: rotate(0deg);
+    -moz-transform-origin: 50% 100%;
+
+    transform: rotate(0deg);
+    transform-origin: 50% 100%;
+}
+
+.quiz-body .timer .inner .holder {
+    position: absolute;
+    width: 76px;
+    height: 76px;
+    clip: rect(0px, 76px, 76px, 38px);
+    left: 14px;
+    top: 24px;
+}
+
+.quiz-body .timer .inner .left.holder {
+    clip: rect(0px, 38px, 76px, 0px);
+}
+
+.quiz-body .timer .inner .holder .pie {
+    /*background-image: url('images/timer_bg.png');
+    background-repeat: no-repeat;*/
+
+    border-color: #00DEFF;
+    background-color: #00DEFF;
+
+    border-radius: 38px;
+
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+.quiz-body .timer .inner .right.holder .pie {
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    clip: rect(0px, 76px, 76px, 38px);
+}
+
+.quiz-body .timer .inner .left.holder .pie {
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    clip: rect(0px, 38px, 76px, 0px);
 }

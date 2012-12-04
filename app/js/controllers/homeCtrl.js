@@ -1,3 +1,5 @@
+"use strict";
+
 quizApp.controller('HomeCtrl', function HomeCtrl($scope) {
 
     var MIN_NAME_LEN = 4;

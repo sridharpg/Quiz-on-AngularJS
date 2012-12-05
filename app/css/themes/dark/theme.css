@@ -51,6 +51,12 @@
 
     text-align: center;
     text-transform: capitalize;
+
+    -webkit-transition-property: border;
+    -webkit-transition-duration: .3s;
+
+    -moz-transition-property: border;
+    -moz-transition-duration: .3s;
 }
 
 .quiz-body .home-view .name-label input:focus {
@@ -143,7 +149,6 @@
     height: 112px;
     display: inline-block;
     position: absolute;
-    top: 0px;
 }
 
 .quiz-body .timer .hand {
@@ -154,7 +159,7 @@
     left: 49px;
     height: 37px;
     border-radius: 10px;
-    z-index: 1;
+    z-index: 2;
 }
 
 .quiz-body .timer .hand.static {
@@ -187,11 +192,7 @@
 }
 
 .quiz-body .timer .inner .holder .pie {
-    /*background-image: url('images/timer_bg.png');
-    background-repeat: no-repeat;*/
-
-    border-color: #00DEFF;
-    background-color: #00DEFF;
+    background: #00DEFF;
 
     border-radius: 38px;
 
@@ -202,6 +203,14 @@
     position: absolute;
     left: 0px;
     top: 0px;
+
+    -webkit-transition-property: background;
+    -moz-transition-property: background;
+}
+
+.quiz-body .timer.started .inner .holder .pie,
+.quiz-body .timer.ended .inner .holder .pie{
+    background: #FF0008;
 }
 
 .quiz-body .timer .inner .right.holder .pie {
@@ -216,4 +225,15 @@
     -webkit-transform: rotate(-180deg);
     transform: rotate(-180deg);
     clip: rect(0px, 38px, 76px, 0px);
+}
+
+.quiz-body .timer .shadow {
+    background-image: url('images/timer_shadow.png');
+    width: 100%;
+    height: 100%;
+    left: 12px;
+    top: 22px;
+    position: absolute;
+    background-repeat: no-repeat;
+    z-index: 1;
 }

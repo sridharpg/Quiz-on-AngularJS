@@ -13,12 +13,13 @@ angular.module('components', [])
 
             controller: function($attrs, $scope) {
                 var timerInterval = null,
-                    duration = parseFloat($attrs.duration) * 1000,
+                    secondsLeft = $attrs.duration,
+                    duration = parseFloat(secondsLeft) * 1000,
                     startRightAngle = -180,
                     startLeftAngle = -180,
                     startHandAngle = 0,
-                    perMSIncrementPerSide = 360*2 / duration,
-                    perIterationIncrement = perMSIncrementPerSide*10;
+                    perMSIncrementPerSide = 360 / duration,
+                    perIterationIncrement = perMSIncrementPerSide * 10;
 
                 $scope.duration = $attrs.duration;
 
@@ -29,7 +30,15 @@ angular.module('components', [])
                     $scope.currentLeftAngle = startLeftAngle;
                     $scope.currentHandAngle = startHandAngle;
 
+                    secondsLeft = $attrs.duration;
+
                     timerInterval = -1;
+                };
+
+                $scope.restart = function() {
+                    $scope.stop();
+                    $scope.reset();
+                    $scope.start();
                 };
 
                 $scope.start = function() {
@@ -60,13 +69,15 @@ angular.module('components', [])
 
                             if (shouldStop) {
                                 $scope.stop();
-                            }else{
+                            } else {
                                 $scope.currentHandAngle += perIterationIncrement;
-                                if($scope.currentHandAngle > 360){
+                                if ($scope.currentHandAngle > 360) {
                                     $scope.currentHandAngle = 360;
                                 }
                             }
                         });
+
+                        secondsLeft -= 1/100;
                     }, 10);
                 };
 
@@ -79,18 +90,44 @@ angular.module('components', [])
 
                 $scope.getTimerStatus = function() {
                     var status = 'stopped';
-                    if(timerInterval === null) {
+                    if (timerInterval === null) {
                         status = 'ended';
-                    }else if(timerInterval !== -1){
+                    } else if (timerInterval !== -1) {
                         status = 'started';
                     }
                     return status;
-                }
+                };
+
+                $scope.getReadableCurrentTime = function() {
+                    var secs = secondsLeft < 0? 0: secondsLeft,
+                        split = 60,
+                        min = 0,
+                        rsecs = 0,
+                        rmins = 0;
+
+                    if (secs > split) {
+                        min = Math.floor(secs / split).toFixed(0);
+                        rsecs = (secs % split).toFixed(0);
+                    } else {
+                        rsecs = (secs * 1).toFixed(0);
+                    }
+
+                    if (rsecs < 10) {
+                        rsecs = "0" + rsecs;
+                    }
+
+                    if(min < 10) {
+                        min = "0" + min;
+                    }
+
+                    rmins = min + ":" + rsecs;
+                    return rmins;
+                };
 
                 $scope.reset();
 
                 if ($attrs.autostart) {
-                    setTimeout(function(){
+                    setTimeout(function() {
                         $scope.start();
                     }, 1);
                 }

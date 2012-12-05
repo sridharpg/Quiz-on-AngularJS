@@ -237,3 +237,48 @@
     background-repeat: no-repeat;
     z-index: 1;
 }
+
+.quiz-body .timer .counter {
+    color: #00DEFF;
+    bottom: -16px;
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+
+    animation: bubbleFont 1s infinite;
+    -moz-animation: bubbleFont 1s infinite;
+    -webkit-animation: bubbleFont 1s infinite;
+
+    transition-property: color;
+    -webkit-transition-property: color;
+    -moz-transition-property: color;
+
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+}
+
+.quiz-body .timer.started .counter,
+.quiz-body .timer.ended .counter{
+    color: #FF0008;
+}
+
+.quiz-body .timer.ended .counter{
+    animation: '';
+    -moz-animation: '';
+    -webkit-animation: '';
+}
+
+@-webkit-keyframes bubbleFont{
+    0% {
+        font-size: 10px;
+    }
+    50% {
+        font-size: 13px;
+    }
+    100% {
+        font-size: 10px;
+    }
+}

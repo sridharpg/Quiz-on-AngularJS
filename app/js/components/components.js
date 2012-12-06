@@ -56,7 +56,7 @@ angular.module('components', [])
                          */
                         $scope.$apply(function() {
                             var angle, shouldStop = false;
-                            if ($scope.currentRightAngle < -1) {
+                            if ($scope.currentRightAngle < 0) {
                                 angle = $scope.currentRightAngle;
                                 angle += perIterationIncrement;
                                 if (angle > 0) {
@@ -66,7 +66,7 @@ angular.module('components', [])
                             } else {
                                 angle = $scope.currentLeftAngle;
                                 angle += perIterationIncrement;
-                                if (angle > -1) {
+                                if (angle > 0) {
                                     angle = 0;
                                     shouldStop = true;
                                 }
@@ -75,7 +75,6 @@ angular.module('components', [])
 
                             if (shouldStop) {
                                 $scope.stop(true);
-                                $scope.currentHandAngle = 360;
                             } else {
                                 $scope.currentHandAngle += perIterationIncrement;
                                 if ($scope.currentHandAngle > 360) {

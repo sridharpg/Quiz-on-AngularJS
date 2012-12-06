@@ -5,8 +5,7 @@
         <link rel="stylesheet" href="css/themes/dark/theme.css">
     </head>
     <body class='quiz-body'>
-        <div ng-include id="home" src=" 'js/views/templates/homeView.html' " style='display: none'></div>
-        <div ng-include id="quizPage" src=" 'js/views/templates/quizView.html' "></div>
+        <div data-ng-view></div>
 
         <script src="js/thirdparty/jquery-1.8.3.js"></script>
         <script src="js/thirdparty/angular.js"></script>

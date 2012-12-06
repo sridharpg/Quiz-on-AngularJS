@@ -5,14 +5,7 @@
     <link rel="stylesheet" href="css/themes/dark/theme.css">
 </head>
 <body class='quiz-body'>
-    <div id="quiz" data-ng-controller="QuizCtrl">
-        <div ng-include id="home" src=" 'js/views/templates/homeView.html' "></div>
-        <ul id="question-list" style="display: none">
-            <li data-ng-repeat="q in quiz.questionnaire">
-                <span>{{q.statement}}</span>
-            </li>
-        </ul>
-    </div>
+    <data-ng-view></data-ng-view>
 
     <script src="js/thirdparty/angular.js"></script>
     <script src="js/thirdparty/angular-resource.js"></script>
@@ -21,8 +14,10 @@
 
     <script src="js/models/questionModel.js"></script>
     <script src="js/models/quizModel.js"></script>
+    <script src="js/models/userModel.js"></script>
 
     <script src="js/controllers/quizCtrl.js"></script>
     <script src="js/controllers/homeCtrl.js"></script>
+
 </body>
 </html>

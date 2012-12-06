@@ -2,7 +2,7 @@
 
 quizApp.factory('questionModel', function () {
     return {
-        create: function (data) {
+        create: function (data, id) {
             var question = {};
             question.statement = data.question;
             if (data.answers !== null) {
@@ -14,6 +14,7 @@ quizApp.factory('questionModel', function () {
             question.weightage = data.weight;
             question.isMCQ = (data.type === "radio");
             question.answer = data.correctAnswer;
+            question.id = id;
             return question;
         }
     };

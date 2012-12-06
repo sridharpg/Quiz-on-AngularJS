@@ -42,7 +42,7 @@
     background: rgba(255, 255, 255, .15);
     outline: none;
 
-    color: white;
+    color: #B2B2B2;
 
     font-size: 30px;
 
@@ -51,6 +51,16 @@
 
     text-align: center;
     text-transform: capitalize;
+
+    -webkit-transition-property: border;
+    -webkit-transition-duration: .3s;
+
+    -moz-transition-property: border;
+    -moz-transition-duration: .3s;
+}
+
+.quiz-body .home-view .name-label input:focus {
+    border: 2px solid #595959;
 }
 
 .quiz-body .button-bar {
@@ -130,4 +140,167 @@
         color-stop(0.19, rgb(255,255,255)),
         color-stop(0.75, rgb(153,153,153))
     );
+}
+
+.quiz-body .timer {
+    background-image: url('images/timer_outer.png');
+    background-repeat: no-repeat;
+    width: 103px;
+    height: 112px;
+    display: inline-block;
+    position: absolute;
+    top: 0px;
+}
+
+.quiz-body .timer .hand {
+    width: 6px;
+    background: white;
+    position: absolute;
+    top: 25px;
+    left: 49px;
+    height: 37px;
+    border-radius: 10px;
+    z-index: 2;
+}
+
+.quiz-body .timer .hand.static {
+    padding-bottom: 3px;
+    box-shadow: 1px -1px 5px 0px #999;
+}
+
+.quiz-body .timer .hand.moving {
+    -webkit-transform: rotate(0deg);
+    -webkit-transform-origin: 50% 100%;
+
+    -moz-transform: rotate(0deg);
+    -moz-transform-origin: 50% 100%;
+
+    transform: rotate(0deg);
+    transform-origin: 50% 100%;
+}
+
+.quiz-body .timer .inner .holder {
+    position: absolute;
+    width: 76px;
+    height: 76px;
+    clip: rect(0px, 76px, 76px, 38px);
+    left: 14px;
+    top: 24px;
+}
+
+.quiz-body .timer .inner .left.holder {
+    clip: rect(0px, 38px, 76px, 0px);
+}
+
+.quiz-body .timer .inner .holder .pie {
+    background: #00DEFF;
+
+    border-radius: 38px;
+
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    left: 0px;
+    top: 0px;
+
+    -webkit-transition-property: background;
+    -moz-transition-property: background;
+
+    transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
+}
+
+.quiz-body .timer.started .inner .holder .pie,
+.quiz-body .timer.ended .inner .holder .pie{
+    background: #FF9100;
+}
+
+.quiz-body .timer .inner .right.holder .pie {
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    clip: rect(0px, 76px, 76px, 38px);
+}
+
+.quiz-body .timer .inner .left.holder .pie {
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    clip: rect(0px, 38px, 76px, 0px);
+}
+
+.quiz-body .timer .shadow {
+    background-image: url('images/timer_shadow.png');
+    width: 100%;
+    height: 100%;
+    left: 12px;
+    top: 22px;
+    position: absolute;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.quiz-body .timer .counter,
+.quiz-body .timer.stopped .counter{
+    color: #00DEFF;
+    bottom: -16px;
+    position: absolute;
+    font-size: 12px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+
+    transition-property: color;
+    -webkit-transition-property: color;
+    -moz-transition-property: color;
+
+    transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
+
+    animation: bubbleFont 1s infinite;
+    -moz-animation: bubbleFont 1s infinite;
+    -webkit-animation: bubbleFont 1s infinite;
+
+    animation-timing-function: ease-in-out;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-timing-function: ease-in-out;
+}
+
+.quiz-body .timer.stopped *{
+    -webkit-transition-duration: 0s !important;
+}
+
+.quiz-body .timer.started .counter,
+.quiz-body .timer.ended .counter{
+    color: #FF9100;
+}
+
+.quiz-body .timer.ended .counter,
+.quiz-body .timer.stopped .counter{
+    animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    -o-animation-play-state: paused;
+}
+
+@-webkit-keyframes bubbleFont{
+    0% {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
+    50% {
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        transform: scale(1.2);
+    }
+    100% {
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        transform: scale(1);
+    }
 }

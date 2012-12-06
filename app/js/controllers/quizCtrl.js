@@ -1,7 +1,7 @@
 "use strict";
 
 quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, userModel) {
-    $resource('/Quiz-on-AngularJS/app/fixtures/questions.json').get(function (data) {
+    $resource('fixtures/questions.json').get(function (data) {
         $scope.quiz = quizModel.initialize(data);
         if ($scope.quiz.isRandom) {
             $scope.quiz.questionnaire = $scope.shuffle($scope.quiz.questionnaire);

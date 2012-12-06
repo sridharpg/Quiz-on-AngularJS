@@ -1,4 +1,7 @@
 <div id="quiz" data-ng-controller="QuizCtrl" class='quiz-body'>
+    <header>
+        <timer duration='5' autostart='true'></timer>
+    </header>
     <ul id="question-list" style="list-style: none;color: #ffffff;">
         <li data-ng-repeat="q in quiz.questionnaire|startFrom:quiz.currentPage | limitTo:1">
             <div style="overflow: hidden;">

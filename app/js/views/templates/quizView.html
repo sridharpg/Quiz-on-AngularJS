@@ -1,0 +1,30 @@
+<div id="quiz" data-ng-controller="QuizCtrl" class='quiz-body'>
+    <header>
+        <timer duration='5' autostart='true'></timer>
+    </header>
+    <ul id="question-list" style="list-style: none;color: #ffffff;">
+        <li data-ng-repeat="q in quiz.questionnaire|startFrom:quiz.currentPage | limitTo:1">
+            <div style="overflow: hidden;">
+                <span style="float:left;"> Question {{quiz.currentPage+1}}/{{quiz.questionnaire.length}}</span>
+                <span style="float: left;margin-left: 40%;"> Timer</span>
+                <span style="float: right;"> Weight {{q.weightage}}</span>
+            </div>
+            <div>
+                <span>{{q.statement}}</span><br/>
+                    <span data-ng-repeat="option in q.options">
+                        <input type="radio" value="{{option}}" data-ng-model="user.response" >{{option}}<br/>
+                    </span>
+                <!-- for image -->
+                    <span data-ng-show="q.imgPath.length>0">
+                        <img src="{{q.imgPath}}">
+                        <input type="text" data-ng-model="user.response">
+                    </span>
+            </div>
+            <div>
+                <a>&lt; Quit</a>
+                <button ng-disabled="hasNext()" ng-click="submitAns()">Next</button>
+                <a>&gt; Pass</a>
+            </div>
+        </li>
+    </ul>
+</div>

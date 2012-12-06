@@ -11,7 +11,7 @@ angular.module('components', [])
 
             transclude: true,
 
-            controller: function($attrs, $scope) {
+            controller: function($scope, $rootScope, $attrs) {
                 var timerInterval = null,
                     secondsLeft = $attrs.duration,
                     duration = parseFloat(secondsLeft) * 1000,
@@ -36,9 +36,15 @@ angular.module('components', [])
                 };
 
                 $scope.restart = function() {
-                    $scope.stop();
-                    $scope.reset();
-                    $scope.start();
+                    $scope.$apply(function() {
+                        $scope.stop();
+                        $scope.reset();
+                        setTimeout(function(){
+                            $scope.$apply(function() {
+                                $scope.start();
+                            });
+                        }, 1);
+                    });
                 };
 
                 $scope.start = function() {
@@ -68,7 +74,7 @@ angular.module('components', [])
                             }
 
                             if (shouldStop) {
-                                $scope.stop();
+                                $scope.stop(true);
                             } else {
                                 $scope.currentHandAngle += perIterationIncrement;
                                 if ($scope.currentHandAngle > 360) {
@@ -79,12 +85,18 @@ angular.module('components', [])
 
                         secondsLeft -= 1/100;
                     }, 10);
+                    $rootScope.$broadcast('timer_started');
                 };
 
-                $scope.stop = function() {
+                $scope.stop = function(ended) {
                     if (timerInterval) {
                         clearInterval(timerInterval);
-                        timerInterval = null;
+                        timerInterval = ended? null: -1;
+                        if(ended){
+                            $rootScope.$broadcast('timer_ended');
+                        }else{
+                            $rootScope.$broadcast('timer_stopped');
+                        }
                     }
                 };
 
@@ -134,3 +146,7 @@ angular.module('components', [])
             }
         }
     });
+
+
+//To restart
+//angular.element('.timer').scope().restart()

@@ -149,6 +149,7 @@
     height: 112px;
     display: inline-block;
     position: absolute;
+    top: 0px;
 }
 
 .quiz-body .timer .hand {
@@ -206,11 +207,15 @@
 
     -webkit-transition-property: background;
     -moz-transition-property: background;
+
+    transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
 }
 
 .quiz-body .timer.started .inner .holder .pie,
 .quiz-body .timer.ended .inner .holder .pie{
-    background: #FF0008;
+    background: #FF9100;
 }
 
 .quiz-body .timer .inner .right.holder .pie {
@@ -238,7 +243,8 @@
     z-index: 1;
 }
 
-.quiz-body .timer .counter {
+.quiz-body .timer .counter,
+.quiz-body .timer.stopped .counter{
     color: #00DEFF;
     bottom: -16px;
     position: absolute;
@@ -247,38 +253,54 @@
     width: 100%;
     text-align: center;
 
-    animation: bubbleFont 1s infinite;
-    -moz-animation: bubbleFont 1s infinite;
-    -webkit-animation: bubbleFont 1s infinite;
-
     transition-property: color;
     -webkit-transition-property: color;
     -moz-transition-property: color;
+
+    transition-timing-function: ease-in-out;
+    -moz-transition-timing-function: ease-in-out;
+    -webkit-transition-timing-function: ease-in-out;
+
+    animation: bubbleFont 1s infinite;
+    -moz-animation: bubbleFont 1s infinite;
+    -webkit-animation: bubbleFont 1s infinite;
 
     animation-timing-function: ease-in-out;
     -webkit-animation-timing-function: ease-in-out;
     -moz-animation-timing-function: ease-in-out;
 }
 
-.quiz-body .timer.started .counter,
-.quiz-body .timer.ended .counter{
-    color: #FF0008;
+.quiz-body .timer.stopped *{
+    -webkit-transition-duration: 0s !important;
 }
 
+.quiz-body .timer.started .counter,
 .quiz-body .timer.ended .counter{
-    animation: '';
-    -moz-animation: '';
-    -webkit-animation: '';
+    color: #FF9100;
+}
+
+.quiz-body .timer.ended .counter,
+.quiz-body .timer.stopped .counter{
+    animation-play-state: paused;
+    -moz-animation-play-state: paused;
+    -webkit-animation-play-state: paused;
+    -o-animation-play-state: paused;
 }
 
 @-webkit-keyframes bubbleFont{
     0% {
-        font-size: 10px;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        transform: scale(1);
     }
     50% {
-        font-size: 13px;
+        -webkit-transform: scale(1.2);
+        -moz-transform: scale(1.2);
+        transform: scale(1.2);
     }
     100% {
-        font-size: 10px;
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        transform: scale(1);
     }
 }

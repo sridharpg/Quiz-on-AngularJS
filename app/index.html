@@ -6,7 +6,7 @@
 </head>
 <body class='quiz-body'>
     <div ng-include id="home" src=" 'js/views/templates/homeView.html' "></div>
-    <timer duration='3' autostart='true'></timer>
+    <timer duration='5' autostart='true'></timer>
     <div id="quiz" data-ng-controller="QuizCtrl">
         <ul id="question-list" style="display: none">
             <li data-ng-repeat="q in quiz.questionnaire">

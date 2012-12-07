@@ -9,7 +9,7 @@ quizApp.factory('quizModel', function (questionModel) {
             quizData.name = data.title;
 
             if (data.time !== null) {
-                quizData.duration = data.time;
+                quizData.duration = data.durationPerQuestion;
             }
 
             quizData.isRandom = (data.randomized === true);

@@ -50,7 +50,7 @@
             "type": "radio"
         },
         {
-            "question": "If you rearrange the letters ÔCIFAIPCÕ you would have the name of a(n): ",
+            "question": "If you rearrange the letters 'CIFAIPC' you would have the name of a(n): ",
             "answers": [
                 "city", "animal", "ocean", "river", "country"
             ],
@@ -80,6 +80,6 @@
             "type": "fillin"
         }
     ],
-    "time": 120,
+    "durationPerQuestion": 30,
     "randomized": true
 }

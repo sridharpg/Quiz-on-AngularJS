@@ -5,23 +5,41 @@ angular.module('components', [])
 
             templateUrl: 'js/views/templates/timer.html',
 
-            scope: true,
+            scope: {
+                duration: '@',
+                autostart: '@'
+            },
 
             replace: true,
 
             transclude: true,
 
+            compile: function() {
+                return {
+                    post: function(scope) {
+                        if (!scope.autostart) {
+                            setTimeout(function() {
+                                console.log(scope, scope.duration, scope.autostart);
+                                scope.start();
+                            }, 500);
+                        }
+                    }
+                }
+            },
+
+            link: function() {
+                console.log('linking');
+            },
+
             controller: function($scope, $rootScope, $attrs) {
+                console.log('init');
                 var timerInterval = null,
-                    secondsLeft = $attrs.duration,
-                    duration = parseFloat(secondsLeft) * 1000,
+                    secondsLeft, duration, perMSIncrementPerSide,
                     startRightAngle = -180,
                     startLeftAngle = -180,
-                    startHandAngle = 0,
-                    perMSIncrementPerSide = 360 / duration,
-                    perIterationIncrement = perMSIncrementPerSide * 10;
+                    startHandAngle = 0, perIterationIncrement;
 
-                $scope.duration = $attrs.duration;
+                $scope.duration = 0;
 
                 $scope.reset = function() {
                     $scope.stop();
@@ -30,9 +48,12 @@ angular.module('components', [])
                     $scope.currentLeftAngle = startLeftAngle;
                     $scope.currentHandAngle = startHandAngle;
 
-                    secondsLeft = $attrs.duration;
-
                     timerInterval = -1;
+
+                    secondsLeft = $scope.duration;
+                    duration = parseFloat(secondsLeft) * 1000;
+                    perMSIncrementPerSide = 360 / duration;
+                    perIterationIncrement = perMSIncrementPerSide * 10;
                 };
 
                 $scope.restart = function() {
@@ -48,6 +69,8 @@ angular.module('components', [])
                 };
 
                 $scope.start = function() {
+                    $scope.reset();
+                    console.log('from controller', $scope.duration);
                     timerInterval = setInterval(function() {
                         /*
                          Notes:
@@ -56,7 +79,7 @@ angular.module('components', [])
                          */
                         $scope.$apply(function() {
                             var angle, shouldStop = false;
-                            if ($scope.currentRightAngle < -1) {
+                            if ($scope.currentRightAngle < 0) {
                                 angle = $scope.currentRightAngle;
                                 angle += perIterationIncrement;
                                 if (angle > 0) {
@@ -138,12 +161,6 @@ angular.module('components', [])
                 };
 
                 $scope.reset();
-
-                if ($attrs.autostart) {
-                    setTimeout(function() {
-                        $scope.start();
-                    }, 1);
-                }
             }
         }
     });

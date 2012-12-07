@@ -14,21 +14,8 @@ angular.module('components', [])
 
             transclude: true,
 
-            compile: function() {
-                return {
-                    post: function(scope) {
-                        if (!scope.autostart) {
-                            setTimeout(function() {
-                                console.log(scope, scope.duration, scope.autostart);
-                                scope.start();
-                            }, 500);
-                        }
-                    }
-                }
-            },
-
-            link: function() {
-                console.log('linking');
+            link: function(scope, iElement, iAttrs) {
+                console.log("inside link", scope.autostart, scope.duration);
             },
 
             controller: function($scope, $rootScope, $attrs) {

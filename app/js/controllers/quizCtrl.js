@@ -29,7 +29,9 @@ quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, u
             $scope.user.correct = $scope.user.correct + 1;
             $scope.user.score = $scope.user.score + question.weightage;
         }
-        if ($scope.hasNext) {
+        var valid=$scope.hasNext();
+        if (valid!==true) {
+            $scope.user.response="";
             $scope.updatePage();
         } else {
             //TODO result view
@@ -41,5 +43,9 @@ quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, u
         for (var j, x, i = arg.length; i; j = parseInt(Math.random() * i), x = arg[--i], arg[i] = arg[j], arg[j] = x);
         return arg;
     };
+
+    $scope.isAnswered = function () {
+        return ($scope.user.response !== "" && $scope.user.response !== undefined)
+    }
 
 });

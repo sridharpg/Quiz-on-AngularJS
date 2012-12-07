@@ -1,6 +1,10 @@
 'use strict';
 
-var quizApp = angular.module('quizApp', ['ngResource', 'components']);
+var quizApp = angular.module('quizApp', ['ngResource', 'components']).config(['$routeProvider',function($routeProvider){
+    $routeProvider.
+        when('/',{ templateUrl: 'js/views/templates/homeView.html'}).
+        when('/quiz', { templateUrl: 'js/views/templates/quizView.html'});
+}]);
 
 quizApp.filter('startFrom', function () {
     return function (input, start) {
@@ -13,6 +17,4 @@ quizApp.filter('startFrom', function () {
     };
 });
 
-//quizApp.config(function ($routeProvider) {
-//    $routeProvider.when('/', { template: 'js/views/templates/quizView.html'});
-//});
+

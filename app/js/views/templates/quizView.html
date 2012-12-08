@@ -17,9 +17,9 @@
             </span>
         </section>
         <footer class='footer'>
-            <a class='quit'><span>&lt;</span> Quit</a>
-            <button ng-disabled="!isAnswered()" ng-click="submitAns()">Next</button>
-            <a class='pass'>Pass <span>&gt;</span></a>
+            <a class='quit' data-ng-click="quit()"><span>&lt;</span> Quit</a>
+            <button data-ng-disabled="!isAnswered()" data-ng-click="submitAns()">Next</button>
+            <a class='pass' data-ng-click="next()">Pass <span>&gt;</span></a>
         </footer>
     </div>
 </section>

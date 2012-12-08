@@ -3,10 +3,10 @@
     </div>
     <label class='name-label'>
         <span>Enter your name</span>
-        <input type='text' ng-model='userName'/>
+        <input type='text' data-ng-model='userName'/>
     </label>
     <div class='button-bar'>
-        <button ng-disabled='!isValidUserName()' data-ng-click="startQuiz()">Start Quiz</button></a>
+        <button data-ng-disabled='!isValidUserName()' data-ng-click="startQuiz()">Start Quiz</button></a>
         <button>Help</button>
     </div>
 </section>

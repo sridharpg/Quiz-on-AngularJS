@@ -6,12 +6,14 @@
     </header>
     <section class='content'>
         <div class='question'>{{currentQuestion.statement}}</div>
-        <span data-ng-repeat="option in currentQuestion.options">
-            <input type="radio" value="{{option}}" data-ng-model="user.response">{{option}}<br/>
-        </span>
+        <label class='option' data-ng-repeat="option in currentQuestion.options">
+            <span class='inner'>
+                <input type="radio" value="{{option}}" data-ng-model="user.response"><span>{{option}}</span>
+            </span>
+        </label>
         <!-- for image -->
         <span data-ng-show="currentQuestion.imgPath.length>0">
-            <img src="{{currentQuestion.imgPath}}">
+            <img class='picture' src="{{currentQuestion.imgPath}}">
             <input type="text" data-ng-model="user.response">
         </span>
     </section>

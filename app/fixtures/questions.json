@@ -44,7 +44,7 @@
         {
             "question": "Which one of the five choices makes the best comparison? Finger is to Hand as Leaf is to: ",
             "answers": [
-                "twig", "tree", "branch", "blossom", "branch"
+                "twig", "tree", "branch", "blossom"
             ],
             "weight": 5,
             "type": "radio"
@@ -75,11 +75,11 @@
         },
         {
             "question": "Who is the famous personality?",
-            "imageURL": "http: //ia.media-imdb.com/images/M/MV5BMTIwMzAwMzg1MV5BMl5BanBnXkFtZTYwMjc4ODQ2._V1._SX214_CR0,0,214,314_.jpg",
+            "imageURL": "http://ia.media-imdb.com/images/M/MV5BMTIwMzAwMzg1MV5BMl5BanBnXkFtZTYwMjc4ODQ2._V1._SX214_CR0,0,214,314_.jpg",
             "weight": 8,
             "type": "fillin"
         }
     ],
-    "durationPerQuestion": 10,
+    "durationPerQuestion": 30,
     "randomized": true
 }

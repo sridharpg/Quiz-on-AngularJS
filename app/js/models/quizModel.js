@@ -3,13 +3,12 @@
 quizApp.factory('quizModel', function (questionModel) {
     return {
         initialize: function (data) {
-            var quizData, questionId, maxScore;
+            var quizData, questionId;
             quizData = {};
-            maxScore = 0;
             quizData.name = data.title;
 
             if (data.time !== null) {
-                quizData.duration = data.time;
+                quizData.duration = data.durationPerQuestion;
             }
 
             quizData.isRandom = (data.randomized === true);
@@ -20,7 +19,6 @@ quizApp.factory('quizModel', function (questionModel) {
             angular.forEach(data.questions, function (q) {
                 quizData.questionnaire.push(questionModel.create(q, questionId));
                 questionId = questionId + 1;
-                maxScore = maxScore + q.weight;
             });
             quizData.currentPage = 0;
 

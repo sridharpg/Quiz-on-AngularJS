@@ -1,11 +1,12 @@
 "use strict";
 
-quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, userModel) {
+quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, quizModel, userModel) {
     $resource('fixtures/questions.json').get(function (data) {
         $scope.quiz = quizModel.initialize(data);
         if ($scope.quiz.isRandom) {
             $scope.quiz.questionnaire = $scope.shuffle($scope.quiz.questionnaire);
         }
+        $scope.user = userModel.initialize($rootScope.userName);
     });
 
     $scope.hasNext = function () {
@@ -16,9 +17,6 @@ quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, u
         $scope.quiz.currentPage = $scope.quiz.currentPage + 1;
     };
 
-//    $scope.startQuiz = function (userName) {
-//        $scope.user = userModel.initialize(userName);
-//    };
     $scope.user = {};
 
     $scope.submitAns = function (id) {
@@ -29,14 +27,7 @@ quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, u
             $scope.user.correct = $scope.user.correct + 1;
             $scope.user.score = $scope.user.score + question.weightage;
         }
-        var valid=$scope.hasNext();
-        if (valid!==true) {
-            $scope.user.response="";
-            $scope.updatePage();
-        } else {
-            //TODO result view
-            console.log($scope.user.score);
-        }
+        $scope.next();
     };
 
     $scope.shuffle = function (arg) {
@@ -46,6 +37,23 @@ quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, u
 
     $scope.isAnswered = function () {
         return ($scope.user.response !== "" && $scope.user.response !== undefined)
+    };
+
+    $scope.next=function(){
+        var valid = $scope.hasNext();
+        if (valid !== true) {
+            $scope.user.response = "";
+            $scope.updatePage();
+        } else {
+            $rootScope.quizSize = $scope.quiz.questionnaire.length;
+            $rootScope.user = $scope.user;
+            $location.path('/result');
+        }
+    };
+
+    $scope.quit=function(){
+        $rootScope.userName="";
+        $location.path('/');
     }
 
 });

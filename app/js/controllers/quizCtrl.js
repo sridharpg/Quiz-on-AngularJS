@@ -1,6 +1,8 @@
 "use strict";
 
-quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, userModel) {
+quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, userModel, $element) {
+    var timerController = null;
+
     $resource('fixtures/questions.json').get(function (data) {
         $scope.quiz = quizModel.initialize(data);
         $scope.currentPosition = -1;
@@ -8,6 +10,12 @@ quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, u
         if ($scope.quiz.isRandom) {
             $scope.quiz.questionnaire = $scope.shuffle($scope.quiz.questionnaire);
         }
+
+        /*Todo: Should not access view from controller. Need to fix this part*/
+        timerController = $element.find('.timer').scope();
+        timerController.$on('timer_ended', function(){
+            console.log('ended');
+        });
 
         $scope.updatePage();
     });
@@ -36,8 +44,10 @@ quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, u
         if (valid!==true) {
             $scope.user.response="";
             $scope.updatePage();
+            timerController.restart();
         } else {
             //TODO result view
+            timerController.stop();
             console.log($scope.user.score);
         }
     };
@@ -50,5 +60,4 @@ quizApp.controller('QuizCtrl', function QuizCtrl($scope, $resource, quizModel, u
     $scope.isAnswered = function () {
         return ($scope.user.response !== "" && $scope.user.response !== undefined)
     };
-
 });

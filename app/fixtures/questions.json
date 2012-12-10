@@ -80,6 +80,6 @@
             "type": "fillin"
         }
     ],
-    "durationPerQuestion": 30,
+    "durationPerQuestion": 10,
     "randomized": true
 }

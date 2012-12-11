@@ -12,27 +12,17 @@ angular.module('components', [])
 
             replace: true,
 
-            transclude: true,
-
-            compile: function() {
-                return {
-                    post: function(scope) {
-                        if (!scope.autostart) {
-                            setTimeout(function() {
-                                console.log(scope, scope.duration, scope.autostart);
-                                scope.start();
-                            }, 500);
-                        }
+            link: function(scope, iElement, iAttrs) {
+                scope.$watch('duration', function(_duration){
+                    if(scope.autostart && _duration.length){
+                        setTimeout(function(){
+                            scope.start();
+                        }, 1);
                     }
-                }
+                });
             },
 
-            link: function() {
-                console.log('linking');
-            },
-
-            controller: function($scope, $rootScope, $attrs) {
-                console.log('init');
+            controller: function($scope, $attrs) {
                 var timerInterval = null,
                     secondsLeft, duration, perMSIncrementPerSide,
                     startRightAngle = -180,
@@ -57,20 +47,18 @@ angular.module('components', [])
                 };
 
                 $scope.restart = function() {
-                    $scope.$apply(function() {
-                        $scope.stop();
-                        $scope.reset();
-                        setTimeout(function(){
-                            $scope.$apply(function() {
-                                $scope.start();
-                            });
-                        }, 1);
-                    });
+                    $scope.stop();
+                    $scope.reset();
+                    setTimeout(function(){
+                        $scope.$apply(function() {
+                            /*Starting after a timeout because the classes needs to be reset.*/
+                            $scope.start();
+                        });
+                    }, 1);
                 };
 
                 $scope.start = function() {
                     $scope.reset();
-                    console.log('from controller', $scope.duration);
                     timerInterval = setInterval(function() {
                         /*
                          Notes:
@@ -109,7 +97,7 @@ angular.module('components', [])
 
                         secondsLeft -= 1/100;
                     }, 10);
-                    $rootScope.$broadcast('timer_started');
+                    $scope.$broadcast('timer_started');
                 };
 
                 $scope.stop = function(ended) {
@@ -117,9 +105,9 @@ angular.module('components', [])
                         clearInterval(timerInterval);
                         timerInterval = ended? null: -1;
                         if(ended){
-                            $rootScope.$broadcast('timer_ended');
+                            $scope.$broadcast('timer_ended');
                         }else{
-                            $rootScope.$broadcast('timer_stopped');
+                            $scope.$broadcast('timer_stopped');
                         }
                     }
                 };

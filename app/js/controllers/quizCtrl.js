@@ -1,20 +1,30 @@
 "use strict";
 
-quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, quizModel, userModel) {
+quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, $element, quizModel, userModel) {
+    var timerController;
     $resource('fixtures/questions.json').get(function (data) {
         $scope.quiz = quizModel.initialize(data);
+        $scope.currentPosition = -1;
+
         if ($scope.quiz.isRandom) {
             $scope.quiz.questionnaire = $scope.shuffle($scope.quiz.questionnaire);
         }
-        $scope.user = userModel.initialize($rootScope.userName);
+
+        /*Todo: Should not access view from controller. Need to fix this part*/
+        timerController = $element.find('.timer').scope();
+        timerController.$on('timer_ended', function(){
+            $scope.next();
+        });
+
+        $scope.updatePage();
     });
 
     $scope.hasNext = function () {
-        return ($scope.quiz.currentPage >= $scope.quiz.questionnaire.length - 1);
+        return ($scope.currentPosition >= $scope.quiz.questionnaire.length - 1);
     };
 
     $scope.updatePage = function () {
-        $scope.quiz.currentPage = $scope.quiz.currentPage + 1;
+        $scope.currentQuestion = $scope.quiz.questionnaire[++$scope.currentPosition];
     };
 
     $scope.user = {};
@@ -23,6 +33,7 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
         var question = $scope.quiz.questionnaire.filter(function (value) {
             return value.id === id;
         });
+
         if ($scope.user.response === question.answer) {
             $scope.user.correct = $scope.user.correct + 1;
             $scope.user.score = $scope.user.score + question.weightage;
@@ -44,7 +55,9 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
         if (valid !== true) {
             $scope.user.response = "";
             $scope.updatePage();
+            timerController.restart();
         } else {
+            timerController.stop();
             $rootScope.quizSize = $scope.quiz.questionnaire.length;
             $rootScope.user = $scope.user;
             $location.path('/result');
@@ -54,6 +67,5 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
     $scope.quit=function(){
         $rootScope.userName="";
         $location.path('/');
-    }
-
+    };
 });

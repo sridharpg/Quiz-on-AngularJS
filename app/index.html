@@ -1,5 +1,5 @@
 <!doctype html>
-<html data-ng-app="quizApp">
+<html data-ng-app="quizApp" ng-controller="AppCtrl">
     <head>
         <title>Quiz</title>
         <link rel="stylesheet" href="css/themes/dark/theme.css">
@@ -7,10 +7,13 @@
     <body class='quiz-body'>
         <div data-ng-view></div>
 
+    <p>Change language: <a ng-click="changeLanguage('en')">English (International)</a> | <a ng-click="changeLanguage('de')">German</a> </p>
+
+
         <script src="js/thirdparty/jquery-1.8.3.js"></script>
         <script src="js/thirdparty/angular.js"></script>
         <script src="js/thirdparty/angular-resource.js"></script>
-
+        <script src="js/i18n/angular-locale_en.js"></script>
         <script src="js/app.js"></script>
 
         <script src="js/components/components.js"></script>

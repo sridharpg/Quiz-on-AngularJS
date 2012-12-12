@@ -1,9 +1,19 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+<section class="result-view" data-ng-controller="ResultCtrl">
+    <div class='logo'>
+    </div>
+    <span>Results</span>
+    <div>
+        <span>
+            <i>Congratulations!<br/>
+            Your score is <br/>{{score}}</i>
+        </span>
+    </div>
+    <div>
+        <span>{{user.correct}}</span>
+        <span>/{{quizSize}}</span>
+    </div>
+    <div class='button-bar'>
+        <button>Play Again</button></a>
+        <button>New Game</button>
+    </div>
+</section>

@@ -11,3 +11,7 @@ TODO:
 2. Themes
 3. Questions View
 4. Full Screen
+
+Testing
+Jasmine : http://pivotal.github.com/jasmine/
+JsTestDriver: http://code.google.com/p/js-test-driver/wiki/GettingStarted

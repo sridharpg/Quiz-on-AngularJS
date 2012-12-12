@@ -5,9 +5,16 @@ load:
   - app/js/thirdparty/angular.js
   - app/js/thirdparty/angular-resource.js
   - app/js/thirdparty/angular-mocks.js
+
   - app/js/app.js
+
+  - app/js/models/questionModel.js
+  - app/js/models/userModel.js
+  - app/js/models/quizModel.js
+
   - app/js/components/components.js
   - app/js/controllers/homeCtrl.js
+  - app/js/controllers/quizCtrl.js
 
 
 test:

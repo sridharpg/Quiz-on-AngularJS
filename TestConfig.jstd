@@ -1,0 +1,14 @@
+load:
+  - app/js/thirdparty/jquery-1.8.3.js
+  - app/js/thirdparty/jasmine-1.1.0.js
+  - app/js/thirdparty/JasmineAdapter-1.1.2.js
+  - app/js/thirdparty/angular.js
+  - app/js/thirdparty/angular-resource.js
+  - app/js/thirdparty/angular-mocks.js
+  - app/js/app.js
+  - app/js/components/components.js
+  - app/js/controllers/homeCtrl.js
+
+
+test:
+  - tests/unit/ControllerSpec.js

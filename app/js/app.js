@@ -7,15 +7,4 @@ var quizApp = angular.module('quizApp', ['ngResource', 'components']).config(['$
         when('/result', { templateUrl: 'js/views/templates/resultView.html'});
 }]);
 
-quizApp.filter('startFrom', function () {
-    return function (input, start) {
-        var result = [];
-        start = +start;
-        if (input) {
-            result = input.slice(start);
-        }
-        return result;
-    };
-});
-
 

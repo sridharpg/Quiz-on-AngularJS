@@ -1,0 +1,6 @@
+{
+    "options":[
+        { "id": "en", "label": "English (International)"},
+        { "id": "de", "label": "German"}
+    ]
+}

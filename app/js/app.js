@@ -4,7 +4,8 @@ var quizApp = angular.module('quizApp', ['ngResource', 'components']).config(['$
     $routeProvider.
         when('/', { templateUrl: 'js/views/templates/homeView.html'}).
         when('/quiz', { templateUrl: 'js/views/templates/quizView.html'}).
-        when('/result', { templateUrl: 'js/views/templates/resultView.html'});
+        when('/result', { templateUrl: 'js/views/templates/resultView.html'}).
+        when('/help', { templateUrl: 'js/views/templates/helpView.html'});
 }]).service('appLocale', function ($q, $http, $timeout) {
             
             var getLocaleResources = function (culture) {

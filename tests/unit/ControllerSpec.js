@@ -52,7 +52,7 @@ describe('App controllers', function () {
                 });
 
             scope = $rootScope.$new();
-            ctrl = $controller('QuizCtrl', {$scope:scope,$element:{}});
+            ctrl = $controller('QuizCtrl', {$scope:scope});
         }));
 
         it('should create "quiz" model with 2 questions',function(){

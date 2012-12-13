@@ -5,10 +5,10 @@
         <link rel="stylesheet" href="css/themes/dark/theme.css">
     </head>
     <body class='quiz-body'>
-        <div data-ng-view></div>
 
-    <p>Change language: <a ng-click="changeLanguage('en')">English (International)</a> | <a ng-click="changeLanguage('de')">German</a> </p>
+    <select data-ng-change="selectAction()"data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
 
+    <div data-ng-view></div>
 
         <script src="js/thirdparty/jquery-1.8.3.js"></script>
         <script src="js/thirdparty/angular.js"></script>
@@ -21,9 +21,11 @@
         <script src="js/models/questionModel.js"></script>
         <script src="js/models/quizModel.js"></script>
         <script src="js/models/userModel.js"></script>
+        <script src="js/models/localizationModel.js"></script>
 
         <script src="js/controllers/quizCtrl.js"></script>
         <script src="js/controllers/homeCtrl.js"></script>
         <script src="js/controllers/resultCtrl.js"></script>
+        <script src="js/controllers/localizationCtrl.js"></script>
     </body>
 </html>

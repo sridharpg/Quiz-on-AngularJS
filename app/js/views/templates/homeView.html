@@ -5,7 +5,7 @@
         <input type='text' data-ng-model='userName'/>
     </label>
     <div class='button-bar'>
-        <button data-ng-disabled='!isValidUserName()' data-ng-click="startQuiz()">Start Quiz</button></a>
-        <button>Help</button>
+        <button data-ng-disabled='!isValidUserName()' data-ng-click="startQuiz()">{{locale['start-quiz']}}</button>
+        <button data-ng-click="help()">{{locale['help']}}</button>
     </div>
 </section>

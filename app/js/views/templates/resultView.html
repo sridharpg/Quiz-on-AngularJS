@@ -1,11 +1,11 @@
 <section class="result-view" data-ng-controller="ResultCtrl">
     <div class='logo'>
     </div>
-    <span>Results</span>
+    <span>{{locale['results']}}</span>
     <div>
         <span>
-            <i>Congratulations!<br/>
-            Your score is <br/>{{score}}</i>
+            <i>{{locale['congrats']}}<br/>
+            {{locale['score-msg']}}<br/>{{score}}</i>
         </span>
     </div>
     <div>
@@ -13,7 +13,7 @@
         <span>/{{quizSize}}</span>
     </div>
     <div class='button-bar'>
-        <button>Play Again</button></a>
-        <button>New Game</button>
+        <button data-ng-click="playAgain()">{{locale['play-again']}}</button>
+        <button data-ng-click="newGame()">{{locale['new-game']}}</button>
     </div>
 </section>

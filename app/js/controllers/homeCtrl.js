@@ -12,4 +12,7 @@ quizApp.controller('HomeCtrl', function HomeCtrl($rootScope, $scope, $location) 
         $rootScope.userName = $scope.userName;
         $location.path('/quiz');
     };
+    $scope.help = function() {
+       $location.path('/help');
+    }
 });

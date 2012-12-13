@@ -1,16 +1,19 @@
 <!doctype html>
-<html data-ng-app="quizApp">
+<html data-ng-app="quizApp" ng-controller="AppCtrl">
     <head>
         <title>Quiz</title>
         <link rel="stylesheet" href="css/themes/dark/theme.css">
     </head>
     <body class='quiz-body'>
-        <div data-ng-view></div>
+
+    <select data-ng-change="selectAction()"data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
+
+    <div data-ng-view></div>
 
         <script src="js/thirdparty/jquery-1.8.3.js"></script>
         <script src="js/thirdparty/angular.js"></script>
         <script src="js/thirdparty/angular-resource.js"></script>
-
+        <script src="js/i18n/angular-locale_en.js"></script>
         <script src="js/app.js"></script>
 
         <script src="js/components/components.js"></script>
@@ -18,9 +21,11 @@
         <script src="js/models/questionModel.js"></script>
         <script src="js/models/quizModel.js"></script>
         <script src="js/models/userModel.js"></script>
+        <script src="js/models/localizationModel.js"></script>
 
         <script src="js/controllers/quizCtrl.js"></script>
         <script src="js/controllers/homeCtrl.js"></script>
         <script src="js/controllers/resultCtrl.js"></script>
+        <script src="js/controllers/localizationCtrl.js"></script>
     </body>
 </html>

@@ -1,11 +1,11 @@
 <section class='home-view' data-ng-controller="HomeCtrl">
     <div class='logo'></div>
     <label class='name-label'>
-        <span>{{locale['home-text']}}</span>
+        <span>Enter your name</span>
         <input type='text' data-ng-model='userName'/>
     </label>
     <div class='button-bar'>
         <button data-ng-disabled='!isValidUserName()' data-ng-click="startQuiz()">{{locale['start-quiz']}}</button>
-        <button>{{locale['help']}}</button>
+        <button data-ng-click="help()">{{locale['help']}}</button>
     </div>
 </section>

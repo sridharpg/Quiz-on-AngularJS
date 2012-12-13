@@ -7,8 +7,54 @@
     color: white;
 }
 
+#floating-toolbar {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 500px;
+}
+
+#language-select {
+    opacity: .6;
+    max-width: 50px;
+    float: left;
+    -webkit-transition-property: opacity,max-width;
+    -webkit-transition-duration: .2s;
+    -moz-transition-property: opacity;
+    -moz-transition-duration: .2s;
+}
+
+#language-select:hover {
+    opacity: 1;
+    max-width: 1000px;
+}
+
 ::selection{
     background: #0098af;
+}
+
+.quiz-body .theme-bar {
+    float: left;
+    top: 6px;
+    position: relative;
+}
+
+.quiz-body .theme-bar .dark, .quiz-body .theme-bar .funky {
+    background: #333;
+    border: 1px solid black;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+    float: left;
+    margin-left: 5px;
+}
+
+.quiz-body .theme-bar .dark:hover, .quiz-body .theme-bar .funky:hover{
+    border: 1px solid #ccc;
+}
+
+.quiz-body .theme-bar .funky {
+    background: #d10065;
 }
 
 .quiz-body .home-view {

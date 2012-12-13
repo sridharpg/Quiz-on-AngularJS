@@ -1,7 +1,7 @@
 <section class="quiz-view" data-ng-controller="QuizCtrl">
     <header class='header'>
         <span class='question-number'>Question {{currentPosition+1}}/{{quiz.questionnaire.length}}</span>
-        <timer duration='{{quiz.duration*100}}' autostart='true'></timer>
+        <timer duration='{{quiz.duration}}' autostart='true'></timer>
         <span class='weight'>Weight {{currentQuestion.weightage}}</span>
     </header>
     <section class='content'>

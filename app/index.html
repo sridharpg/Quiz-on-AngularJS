@@ -2,14 +2,17 @@
 <html data-ng-app="quizApp" ng-controller="AppCtrl">
     <head>
         <title>Quiz</title>
-        <link rel="stylesheet" href="css/themes/dark/theme.css">
     </head>
     <body class='quiz-body'>
+        <div id="floating-toolbar">
+            <select id="language-select" data-ng-change="selectAction()"data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
+            <div ng-controller="ThemeCtrl" class="theme-bar">
+                <link rel="stylesheet" href="css/themes/{{theme}}/theme.css">
+                <div class='dark' data-ng-click="changeTheme('dark')"></div><div class='funky' data-ng-click="changeTheme('funky')"></div>
+            </div>
+        </div>
 
-    <select data-ng-change="selectAction()"data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
-
-    <div data-ng-view></div>
-
+        <div data-ng-view></div>
         <script src="js/thirdparty/jquery-1.8.3.js"></script>
         <script src="js/thirdparty/angular.js"></script>
         <script src="js/thirdparty/angular-resource.js"></script>
@@ -27,5 +30,6 @@
         <script src="js/controllers/homeCtrl.js"></script>
         <script src="js/controllers/resultCtrl.js"></script>
         <script src="js/controllers/localizationCtrl.js"></script>
+        <script src="js/controllers/themeCtrl.js"></script>
     </body>
 </html>

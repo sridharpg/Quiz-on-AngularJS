@@ -14,7 +14,13 @@ quizApp.factory('questionModel', function () {
             question.weightage = data.weight;
             question.isMCQ = (data.type === "radio");
             question.answer = data.correctAnswer;
+            question.type = data.type;
             question.id = id;
+
+            question.isFillIn = function(){
+                return (question.type == 'fillin');
+            }
+
             return question;
         }
     };

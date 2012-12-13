@@ -407,7 +407,11 @@
 }
 
 .quiz-body .quiz-view .content .question{
-    margin-bottom: 50px;
+    padding-bottom: 50px;
+    min-height: 50px;
+    max-height: 90px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
 }
 
 .quiz-body .quiz-view .content input[type='radio'] {

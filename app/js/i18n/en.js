@@ -7,7 +7,7 @@
     "help": "Help",
     "results":"Results",
     "congrats":"Congratulations!",
-    "score-msg":"Your score is ",
+    "score-msg":"Your score is",
     "play-again":"Play Again",
     "new-game":"New Game"
 }

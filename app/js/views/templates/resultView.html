@@ -1,16 +1,14 @@
 <section class="result-view" data-ng-controller="ResultCtrl">
-    <div class='logo'>
+    <div class='logo'></div>
+    <div class='result-container'>
+        <header>{{locale['results']}}</header>
+        <div class='result-content'>
+                {{locale['congrats']}}
+                <div class='score-container'>{{locale['score-msg']}}<br>10{{score}}</div>
+        </div>
     </div>
-    <span>{{locale['results']}}</span>
-    <div>
-        <span>
-            <i>{{locale['congrats']}}<br/>
-            {{locale['score-msg']}}<br/>{{score}}</i>
-        </span>
-    </div>
-    <div>
-        <span>{{user.correct}}</span>
-        <span>/{{quizSize}}</span>
+    <div class='score-content'>
+        <span>2{{user.correct}}</span>/{{quizSize}}
     </div>
     <div class='button-bar'>
         <button data-ng-click="playAgain()">{{locale['play-again']}}</button>

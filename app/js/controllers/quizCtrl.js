@@ -68,4 +68,7 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
         $rootScope.userName="";
         $location.path('/');
     };
+    $scope.back=function(){
+        $location.path('/');
+    };
 });

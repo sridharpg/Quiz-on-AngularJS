@@ -1,16 +1,16 @@
 <!doctype html>
 <html data-ng-app="quizApp" ng-controller="AppCtrl">
     <head>
-        <title>Quiz</title>
+        <title>{{locale['Quiz']}}</title>
     </head>
     <body class='quiz-body' ng-init="loadLang()">
-        <div id="floating-toolbar">
-            <select id="language-select" data-ng-change="selectAction()"data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
-            <div ng-controller="ThemeCtrl" class="theme-bar">
-                <link rel="stylesheet" href="css/themes/{{theme}}/theme.css">
-                <div class='dark' data-ng-click="changeTheme('dark')"></div><div class='funky' data-ng-click="changeTheme('funky')"></div>
-            </div>
+    <div id="floating-toolbar">
+        <select id="language-select" data-ng-change="selectAction()"data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
+        <div ng-controller="ThemeCtrl" class="theme-bar">
+            <link rel="stylesheet" href="css/themes/{{theme}}/theme.css">
+            <div class='dark' data-ng-click="changeTheme('dark')"></div><div class='funky' data-ng-click="changeTheme('funky')"></div>
         </div>
+    </div>
 
         <div data-ng-view></div>
         <script src="js/thirdparty/jquery-1.8.3.js"></script>

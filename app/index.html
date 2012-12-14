@@ -3,6 +3,14 @@
     <head>
         <title>Quiz</title>
     </head>
+<<<<<<< HEAD
+    <body class='quiz-body' ng-init="loadLang()">
+
+    <select data-ng-change="selectAction()" data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
+
+    <div data-ng-view></div>
+
+=======
     <body class='quiz-body'>
         <div id="floating-toolbar">
             <select id="language-select" data-ng-change="selectAction()"data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
@@ -13,6 +21,7 @@
         </div>
 
         <div data-ng-view></div>
+>>>>>>> 6c8c2b6b76a971ce89d0c6d334f6230bcc6e300d
         <script src="js/thirdparty/jquery-1.8.3.js"></script>
         <script src="js/thirdparty/angular.js"></script>
         <script src="js/thirdparty/angular-resource.js"></script>

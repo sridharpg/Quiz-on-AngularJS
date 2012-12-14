@@ -1,10 +1,10 @@
-<section class='help-view' data-ng-controller="QuizCtrl">
-    <div>
-        <p>The score obtained at the end of the Quiz is the sum of weights of the questions answered correctly.</p>
-        <p>There are {{quiz.questionnaire.length}} questions</p>
-        <p>All the questions do not have the same weight.</p>
-        <p>Each question has time limit of {{quiz.duration}} seconds </p>
-        <p>If you do not answer the question in the time limit the question is passed</p>
-        <button data-ng-click="back()">{{locale['back']}}</button>
-    </div>
+<section class='help-view' data-ng-controller="HelpCtrl">
+    <ul>
+        <li>The score obtained at the end of the Quiz is sum of weights of the questions answered correctly</li>
+        <li>All the questions do not have the same weight</li>
+        <li>If you do not answer the question in the time limit the question is passed</li>
+        <li>There are {{quiz.questionnaire.length}} questions</li>
+        <li>Each question has time limit of {{quiz.duration}} seconds </li>
+    </ul>
+    <button data-ng-click="back()">{{locale['back']}}</button>
 </section>

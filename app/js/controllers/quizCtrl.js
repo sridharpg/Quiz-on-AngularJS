@@ -1,6 +1,6 @@
 "use strict";
 
-quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, $element, quizModel) {
+quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, $element, quizModel, userModel) {
     var timerController;
     $resource('fixtures/questions.json').get(function (data) {
         $scope.quiz = quizModel.initialize(data);
@@ -65,9 +65,6 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
 
     $scope.quit=function(){
         $rootScope.userName="";
-        $location.path('/');
-    };
-    $scope.back=function(){
         $location.path('/');
     };
 });

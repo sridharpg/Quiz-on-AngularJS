@@ -1,6 +1,6 @@
 "use strict";
 
-quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, $element, quizModel, userModel) {
+quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, $element, quizModel) {
     var timerController;
     $resource('fixtures/questions.json').get(function (data) {
         $scope.quiz = quizModel.initialize(data);
@@ -10,7 +10,6 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
             $scope.quiz.questionnaire = $scope.shuffle($scope.quiz.questionnaire);
         }
 
-        /*Todo: Should not access view from controller. Need to fix this part*/
         timerController = $element.find('.timer').scope();
         timerController.$on('timer_ended', function(){
             $scope.next();

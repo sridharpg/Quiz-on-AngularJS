@@ -12,7 +12,7 @@ angular.module('components', [])
 
             replace: true,
 
-            link: function(scope, iElement, iAttrs) {
+            link: function(scope) {
                 scope.$watch('duration', function(_duration){
                     if(scope.autostart && _duration.length){
                         setTimeout(function(){
@@ -22,7 +22,7 @@ angular.module('components', [])
                 });
             },
 
-            controller: function($scope, $attrs) {
+            controller: function($scope) {
                 var timerInterval = null,
                     secondsLeft, duration, perMSIncrementPerSide,
                     startRightAngle = -180,

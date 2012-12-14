@@ -14,11 +14,11 @@ quizApp.controller('AppCtrl', function ($scope, $location,$resource, $routeParam
         });
     };
     //Ensure that when the app first loads that the locale resources are applied
-    $scope.$on('$routeChangeSuccess', function () {
+    $scope.loadLang =  function () {
         if ($scope.locale == null || $scope.locale['locale-id'] !== $routeParams.culture) {
             $scope.changeLanguage($routeParams.culture);
         }
-    });
+    };
 
     $scope.selectAction=function(){
         $scope.changeLanguage($scope.selected);

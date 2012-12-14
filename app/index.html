@@ -4,9 +4,9 @@
         <title>Quiz</title>
         <link rel="stylesheet" href="css/themes/dark/theme.css">
     </head>
-    <body class='quiz-body'>
+    <body class='quiz-body' ng-init="loadLang()">
 
-    <select data-ng-change="selectAction()"data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
+    <select data-ng-change="selectAction()" data-ng-model="selected" data-ng-options="l.id as l.label for l in languages"></select>
 
     <div data-ng-view></div>
 

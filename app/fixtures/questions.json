@@ -6,6 +6,7 @@
             "answers": [
                 "true", "false"
             ],
+            "correctAnswer":"false",
             "weight": 2,
             "type": "radio"
         },
@@ -14,6 +15,7 @@
             "answers": [
                 8, 13, 21, 26, 31
             ],
+            "correctAnswer":"21",
             "weight": 2,
             "type": "radio"
         },
@@ -22,6 +24,7 @@
             "answers": [
                 "dog", "mouse", "lion", "snake", "elephant"
             ],
+            "correctAnswer":"snake",
             "weight": 4,
             "type": "radio"
         },
@@ -30,6 +33,7 @@
             "answers": [
                 20, 24, 25, 26, 28
             ],
+            "correctAnswer":"24",
             "weight": 4,
             "type": "radio"
         },
@@ -38,6 +42,7 @@
             "answers": [
                 3, 7, 8, 15, 30
             ],
+            "correctAnswer":"8",
             "weight": 4,
             "type": "radio"
         },
@@ -46,6 +51,7 @@
             "answers": [
                 "twig", "tree", "branch", "blossom"
             ],
+            "correctAnswer":"twig",
             "weight": 5,
             "type": "radio"
         },
@@ -54,6 +60,7 @@
             "answers": [
                 "city", "animal", "ocean", "river", "country"
             ],
+            "correctAnswer":"ocean",
             "weight": 2,
             "type": "radio"
         },
@@ -62,6 +69,7 @@
             "answers": [
                 2, 5, 10, 25, 50
             ],
+            "correctAnswer":"10",
             "weight": 4,
             "type": "radio"
         },
@@ -70,12 +78,14 @@
             "answers": [
                 2, 4, 4.5, 5, 6
             ],
+            "correctAnswer": "5",
             "weight": 6,
             "type": "radio"
         },
         {
             "question": "Who is the famous personality?",
             "imageURL": "http://ia.media-imdb.com/images/M/MV5BMTIwMzAwMzg1MV5BMl5BanBnXkFtZTYwMjc4ODQ2._V1._SX214_CR0,0,214,314_.jpg",
+            "correctAnswer":"Stanley Kubrick",
             "weight": 8,
             "type": "fillin"
         }

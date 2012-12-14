@@ -8,6 +8,13 @@
     color: white;
 }
 
+.quiz-body *{
+    -webkit-transition-property: color,background;
+    -webkit-transition-duration: .2s;
+    -moz-transition-property: color,background;
+    -moz-transition-duration: .2s;
+}
+
 #floating-toolbar {
     position: absolute;
     top: 0px;
@@ -21,7 +28,7 @@
     float: left;
     -webkit-transition-property: opacity,max-width;
     -webkit-transition-duration: .2s;
-    -moz-transition-property: opacity;
+    -moz-transition-property: opacity,max-width;
     -moz-transition-duration: .2s;
 }
 
@@ -260,7 +267,7 @@
 }
 
 .quiz-body .timer .inner .holder .pie {
-    background: #c3a22e;
+    background: #c33215;
 
     border-radius: 38px;
 
@@ -271,18 +278,6 @@
     position: absolute;
     left: 0px;
     top: 0px;
-
-    -webkit-transition-property: background;
-    -moz-transition-property: background;
-
-    transition-timing-function: ease-in-out;
-    -moz-transition-timing-function: ease-in-out;
-    -webkit-transition-timing-function: ease-in-out;
-}
-
-.quiz-body .timer.started .inner .holder .pie,
-.quiz-body .timer.ended .inner .holder .pie{
-    background: #c33215;
 }
 
 .quiz-body .timer .inner .right.holder .pie {
@@ -312,7 +307,7 @@
 
 .quiz-body .timer .counter,
 .quiz-body .timer.stopped .counter{
-    color: #c3a22e;
+    color: #c33215;
     bottom: -25px;
     position: absolute;
     font-size: 18px;
@@ -321,14 +316,6 @@
     text-align: center;
     line-height: 1;
 
-    transition-property: color;
-    -webkit-transition-property: color;
-    -moz-transition-property: color;
-
-    transition-timing-function: ease-in-out;
-    -moz-transition-timing-function: ease-in-out;
-    -webkit-transition-timing-function: ease-in-out;
-
     animation: bubbleFont 1s infinite;
     -moz-animation: bubbleFont 1s infinite;
     -webkit-animation: bubbleFont 1s infinite;
@@ -336,15 +323,6 @@
     animation-timing-function: ease-in-out;
     -webkit-animation-timing-function: ease-in-out;
     -moz-animation-timing-function: ease-in-out;
-}
-
-.quiz-body .timer.stopped *{
-    -webkit-transition-duration: 0s !important;
-}
-
-.quiz-body .timer.started .counter,
-.quiz-body .timer.ended .counter{
-    color: #c33215;
 }
 
 .quiz-body .timer.ended .counter,

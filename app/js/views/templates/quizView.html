@@ -9,13 +9,14 @@
         <div class='options-container'>
             <label class='option' data-ng-repeat="option in currentQuestion.options">
                 <span class='inner'>
-                    <input type="radio" value="{{option}}" data-ng-model="user.response"><div class='tick'>&nbsp;</div><span>{{option}}</span>
+                    <input type="radio" value="{{option}}" data-ng-model="$parent.currentResponse"><div class='tick'>&nbsp;</div><span>{{option}}</span>
                 </span>
             </label>
+
             <!-- for image -->
             <img class='picture' data-ng-show="currentQuestion.imgPath.length>0" src="{{currentQuestion.imgPath}}">
             <span data-ng-show="currentQuestion.isFillIn()">
-                <input type="text" data-ng-model="user.response">
+                <input type="text" data-ng-model="currentResponse">
             </span>
         </div>
     </section>

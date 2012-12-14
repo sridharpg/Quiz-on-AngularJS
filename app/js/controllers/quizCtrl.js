@@ -6,6 +6,8 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
         $scope.quiz = quizModel.initialize(data);
         $scope.currentPosition = -1;
 
+        $scope.user = userModel.initialize($rootScope.userName);
+
         if ($scope.quiz.isRandom) {
             $scope.quiz.questionnaire = $scope.shuffle($scope.quiz.questionnaire);
         }
@@ -27,14 +29,12 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
         $scope.currentQuestion = $scope.quiz.questionnaire[++$scope.currentPosition];
     };
 
-    $scope.user = {};
-
     $scope.submitAns = function (id) {
         var question = $scope.quiz.questionnaire.filter(function (value) {
             return value.id === id;
         });
 
-        if ($scope.user.response === question.answer) {
+        if ($scope.currentResponse === question.answer) {
             $scope.user.correct = $scope.user.correct + 1;
             $scope.user.score = $scope.user.score + question.weightage;
         }
@@ -47,13 +47,13 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
     };
 
     $scope.isAnswered = function () {
-        return ($scope.user.response !== "" && $scope.user.response !== undefined)
+        return ($scope.currentResponse !== "" && $scope.currentResponse !== undefined)
     };
 
     $scope.next=function(){
         var valid = $scope.hasNext();
         if (valid !== true) {
-            $scope.user.response = "";
+            $scope.currentResponse = "";
             $scope.updatePage();
             timerController.restart();
         } else {

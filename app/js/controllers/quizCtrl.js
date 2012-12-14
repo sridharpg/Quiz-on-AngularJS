@@ -34,9 +34,9 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
             return value.id === id;
         });
 
-        if ($scope.currentResponse === question.answer) {
+        if ($scope.currentResponse === question[0].answer) {
             $scope.user.correct = $scope.user.correct + 1;
-            $scope.user.score = $scope.user.score + question.weightage;
+            $scope.user.score = $scope.user.score + question[0].weightage;
         }
         $scope.next();
     };

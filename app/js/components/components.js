@@ -1,9 +1,9 @@
 angular.module('components', [])
-    .directive('timer', function() {
+    .directive('timer', function () {
         return {
             restrict: 'E',
 
-            templateUrl: 'js/views/templates/timer.html',
+            templateUrl: '../app/templates/timer.html',
 
             scope: {
                 duration: '@',
@@ -12,26 +12,36 @@ angular.module('components', [])
 
             replace: true,
 
-            link: function(scope) {
-                scope.$watch('duration', function(_duration){
-                    if(scope.autostart && _duration.length){
-                        setTimeout(function(){
+            link: function (scope) {
+                scope.$watch('duration', function (_duration) {
+                    if (scope.autostart && _duration.length) {
+                        setTimeout(function () {
                             scope.start();
                         }, 1);
                     }
                 });
             },
 
-            controller: function($scope) {
+            controller: function ($rootScope, $scope) {
                 var timerInterval = null,
-                    secondsLeft, duration, perMSIncrementPerSide,
+                    secondsLeft,
+                    duration,
+                    perMSIncrementPerSide,
                     startRightAngle = -180,
                     startLeftAngle = -180,
-                    startHandAngle = 0, perIterationIncrement;
+                    startHandAngle = 0,
+                    perIterationIncrement;
 
                 $scope.duration = 0;
 
-                $scope.reset = function() {
+                $rootScope.$on('restart_timer', function () {
+                    $scope.restart();
+                });
+                $rootScope.$on('game_over', function () {
+                    $scope.stop();
+                });
+
+                $scope.reset = function () {
                     $scope.stop();
 
                     $scope.currentRightAngle = startRightAngle;
@@ -46,26 +56,26 @@ angular.module('components', [])
                     perIterationIncrement = perMSIncrementPerSide * 10;
                 };
 
-                $scope.restart = function() {
+                $scope.restart = function () {
                     $scope.stop();
                     $scope.reset();
-                    setTimeout(function(){
-                        $scope.$apply(function() {
+                    setTimeout(function () {
+                        $scope.$apply(function () {
                             /*Starting after a timeout because the classes needs to be reset.*/
                             $scope.start();
                         });
                     }, 1);
                 };
 
-                $scope.start = function() {
+                $scope.start = function () {
                     $scope.reset();
-                    timerInterval = setInterval(function() {
+                    timerInterval = setInterval(function () {
                         /*
                          Notes:
                          Scopes does not get updated automatically when changed from inside setTimeout/setInterval blocks.
                          Hence should wrap it up inside $scope.apply block!
                          */
-                        $scope.$apply(function() {
+                        $scope.$apply(function () {
                             var angle, shouldStop = false;
                             if ($scope.currentRightAngle < 0) {
                                 angle = $scope.currentRightAngle;
@@ -95,24 +105,24 @@ angular.module('components', [])
                             }
                         });
 
-                        secondsLeft -= 1/100;
+                        secondsLeft -= 1 / 100;
                     }, 10);
                     $scope.$broadcast('timer_started');
                 };
 
-                $scope.stop = function(ended) {
+                $scope.stop = function (ended) {
                     if (timerInterval) {
                         clearInterval(timerInterval);
-                        timerInterval = ended? null: -1;
-                        if(ended){
-                            $scope.$broadcast('timer_ended');
-                        }else{
+                        timerInterval = ended ? null : -1;
+                        if (ended) {
+                            $rootScope.$broadcast('timer_ended');
+                        } else {
                             $scope.$broadcast('timer_stopped');
                         }
                     }
                 };
 
-                $scope.getTimerStatus = function() {
+                $scope.getTimerStatus = function () {
                     var status = 'stopped';
                     if (timerInterval === null) {
                         status = 'ended';
@@ -122,8 +132,8 @@ angular.module('components', [])
                     return status;
                 };
 
-                $scope.getReadableCurrentTime = function() {
-                    var secs = secondsLeft < 0? 0: secondsLeft,
+                $scope.getReadableCurrentTime = function () {
+                    var secs = secondsLeft < 0 ? 0 : secondsLeft,
                         split = 60,
                         min = 0,
                         rsecs = 0,
@@ -140,7 +150,7 @@ angular.module('components', [])
                         rsecs = "0" + rsecs;
                     }
 
-                    if(min < 10) {
+                    if (min < 10) {
                         min = "0" + min;
                     }
 

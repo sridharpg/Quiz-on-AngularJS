@@ -19,7 +19,7 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
     });
 
     $scope.hasNext = function () {
-        return ($scope.currentPosition >= $scope.quiz.questionnaire.length - 1);
+        return !($scope.currentPosition >= $scope.quiz.questionnaire.length - 1);
     };
 
     $scope.updatePage = function () {
@@ -49,7 +49,7 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
 
     $scope.next = function () {
         var valid = $scope.hasNext();
-        if (valid !== true) {
+        if (valid === true) {
             $scope.currentResponse = "";
             $scope.updatePage();
             $rootScope.$broadcast('restart_timer');

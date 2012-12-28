@@ -3,7 +3,7 @@ angular.module('components', [])
         return {
             restrict: 'E',
 
-            templateUrl: 'js/views/templates/timer.html',
+            templateUrl: '../app/templates/timer.html',
 
             scope: {
                 duration: '@',

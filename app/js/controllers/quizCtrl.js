@@ -1,7 +1,6 @@
 "use strict";
 
 quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, quizModel, userModel) {
-    var timerController;
     $resource('fixtures/questions.json').get(function (data) {
         $scope.quiz = quizModel.initialize(data);
         $scope.currentPosition = -1;

@@ -22,12 +22,12 @@ describe('App controllers', function () {
 
     });
 
-    describe('QuizController',function(){
-        var scope, ctrl, $httpBackend;
+    describe('QuizController', function () {
+        var scope, ctrl, $httpMock;
 
-        beforeEach(inject(function(_$httpBackend_, $rootScope, $controller) {
-            $httpBackend = _$httpBackend_;
-            $httpBackend.expectGET('fixtures/questions.json').
+        beforeEach(inject(function ($httpBackend, $rootScope, $controller) {
+            $httpMock = $httpBackend;
+            $httpMock.expectGET('fixtures/questions.json').
                 respond({
                     "title": "Test Quiz",
                     "questions": [
@@ -38,7 +38,7 @@ describe('App controllers', function () {
                             ],
                             "weight": 2,
                             "type": "radio",
-                            "correctAnswer":"false"
+                            "correctAnswer": "false"
                         },
                         {
                             "question": "Which number should come next in the series? 53, 53, 40, 40, 27, 27",
@@ -47,18 +47,19 @@ describe('App controllers', function () {
                             ],
                             "weight": 2,
                             "type": "radio",
-                            "correctAnswer":"14"
-                        }]
+                            "correctAnswer": "14"
+                        }
+                    ]
                 });
 
             scope = $rootScope.$new();
-            ctrl = $controller('QuizCtrl', {$scope:scope});
+            ctrl = $controller('QuizCtrl', {$scope: scope});
         }));
 
-        it('should create "quiz" model with 2 questions',function(){
+        it('should create "quiz" model with 2 questions', function () {
             expect(scope.quiz).toBeUndefined();
-            $httpBackend.flush();
-            expect(scope.quizSize).toBe(2);
+            $httpMock.flush();
+            expect(scope.quiz.questionnaire.length).toBe(2);
         });
 
     });

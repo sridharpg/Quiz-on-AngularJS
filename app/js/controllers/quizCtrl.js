@@ -1,6 +1,6 @@
 "use strict";
 
-quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, $element, quizModel, userModel) {
+quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, $location, quizModel, userModel) {
     var timerController;
     $resource('fixtures/questions.json').get(function (data) {
         $scope.quiz = quizModel.initialize(data);
@@ -12,8 +12,7 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
             $scope.quiz.questionnaire = $scope.shuffle($scope.quiz.questionnaire);
         }
 
-        timerController = $element.find('.timer').scope();
-        timerController.$on('timer_ended', function(){
+        $rootScope.$on('timer_ended', function () {
             $scope.next();
         });
 
@@ -49,22 +48,22 @@ quizApp.controller('QuizCtrl', function QuizCtrl($rootScope, $scope, $resource, 
         return ($scope.currentResponse !== "" && $scope.currentResponse !== undefined)
     };
 
-    $scope.next=function(){
+    $scope.next = function () {
         var valid = $scope.hasNext();
         if (valid !== true) {
             $scope.currentResponse = "";
             $scope.updatePage();
-            timerController.restart();
+            $rootScope.$broadcast('restart_timer');
         } else {
-            timerController.stop();
+            $rootScope.$broadcast('game_over');
             $rootScope.quizSize = $scope.quiz.questionnaire.length;
             $rootScope.user = $scope.user;
             $location.path('/result');
         }
     };
 
-    $scope.quit=function(){
-        $rootScope.userName="";
+    $scope.quit = function () {
+        $rootScope.userName = "";
         $location.path('/');
     };
 });

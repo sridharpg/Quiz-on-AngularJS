@@ -12,12 +12,12 @@ describe('App controllers', function () {
 
         it('should be valid name', function () {
             scope.userName = "testUser";
-            expect(scope.isValidUserName).toBeTruthy();
+            expect(scope.isValidUserName()).toBeTruthy();
         });
 
         it('should ignore all spaces as name', function () {
             scope.userName = "      ";
-            expect(scope.isValidUserName).toBeFalsy();
+            expect(scope.isValidUserName()).toBeFalsy();
         });
 
     });
@@ -60,6 +60,30 @@ describe('App controllers', function () {
             expect(scope.quiz).toBeUndefined();
             $httpMock.flush();
             expect(scope.quiz.questionnaire.length).toBe(2);
+        });
+
+        it('should be initialized correctly', function () {
+            $httpMock.flush();
+            expect(scope.currentPosition).toBe(0);
+            expect(scope.currentQuestion).toBeDefined();
+            expect(scope.hasNext()).toBeTruthy();
+            expect(scope.isAnswered()).toBeFalsy();
+        });
+
+        it('should add to the score for correct answer', function () {
+            $httpMock.flush();
+            scope.currentResponse = "false";
+            expect(scope.user.score).toBe(0);
+            scope.submitAns(scope.currentQuestion.id);
+            expect(scope.user.score).toBe(2);
+        });
+
+        it('should not add to the score for wrong answer', function () {
+            $httpMock.flush();
+            scope.currentResponse = "true";
+            expect(scope.user.score).toBe(0);
+            scope.submitAns(scope.currentQuestion.id);
+            expect(scope.user.score).toBe(0);
         });
 
     });
